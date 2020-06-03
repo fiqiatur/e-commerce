@@ -18,7 +18,7 @@ const Header = ({currentUser}) => {
                CONTACT
             </Link>
             {
-               currentUser ? <div className='option' onClick={() => auth.signOut()}>SIGN OUT</div>
+               currentUser ? <div className='option' onClick={() => auth.signOut()}>SIGN OUT</div>   //kondisi jika sudah login maka text berubah menjadi signout
                :
                <Link className='option' to='/signin'> SIGN IN</Link>
             }

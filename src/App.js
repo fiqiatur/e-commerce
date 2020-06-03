@@ -40,7 +40,7 @@ class App extends Component {
                <Route path="/signin" component={Sign} />
             </Switch>
          </div>
-      );
+      );   
    }
 }
 
