@@ -4,7 +4,7 @@ import Homepage from "./pages/homepage/homepage.component";
 import ShopPage from "../src/pages/shop/shop.component";
 import Header from "./components/header/header.component";
 import Sign from "./pages/singn-singup/signin-up";
-import { auth } from "./firebase/firebase.utils";
+import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 import "./App.css";
 
 class App extends Component {
@@ -19,11 +19,10 @@ class App extends Component {
    unsubscribeFromAuth = null;
 
    componentDidMount() {
-      this.unsubscribeFromAuth = auth.onAuthStateChanged((user) => {
-         this.setState({ currentUser: user });
+      this.unsubscribeFromAuth = auth.onAuthStateChanged(async (user) => {
+         createUserProfileDocument(user);
 
-         console.log(user);
-      });
+      }); 
    }
 
    componentWillUnmount() {
@@ -40,7 +39,7 @@ class App extends Component {
                <Route path="/signin" component={Sign} />
             </Switch>
          </div>
-      );   
+      );
    }
 }
 

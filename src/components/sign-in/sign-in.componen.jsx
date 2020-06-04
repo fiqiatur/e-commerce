@@ -31,7 +31,7 @@ export class SignIn extends Component {
             <h2>I alredy</h2>
             <span>Signin wit email & password</span>
 
-            <form onSubmit={this.handleSubmit} autocomplete="off">
+            <form onSubmit={this.handleSubmit} autoComplete="off">
                <FormInput
                   type="email"
                   name="email"
