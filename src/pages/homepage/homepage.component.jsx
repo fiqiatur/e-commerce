@@ -1,6 +1,7 @@
 import React from "react";
 import './homepage.styles.scss'
 import Directory from '../../components/directory/directory.component'
+import Footer from '../../components/Footer/footer'
 
 export default function homepagecomponent() {
    return (
@@ -8,6 +9,7 @@ export default function homepagecomponent() {
          <div className="homepage">
            <Directory />
          </div>
+           <Footer />
       </div>
    );
 }
