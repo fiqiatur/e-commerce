@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import {auth} from '../../firebase/firebase.utils'
+import { connect } from "react-redux";
+import { auth } from "../../firebase/firebase.utils";
 import "./header.component.scss";
 import { ReactComponent as Logo } from "../../asset/crown.svg";
 
-const Header = ({currentUser}) => {
+const Header = ({ currentUser }) => {
    return (
       <div className="header">
          <Link className="logo-container" to="/">
@@ -17,14 +18,22 @@ const Header = ({currentUser}) => {
             <Link className="option" to="/shop">
                CONTACT
             </Link>
-            {
-               currentUser ? <div className='option' onClick={() => auth.signOut()}>SIGN OUT</div>   //kondisi jika sudah login maka text berubah menjadi signout
-               :
-               <Link className='option' to='/signin'> SIGN IN</Link>
-            }
+            {currentUser ? (
+               <div className="option" onClick={() => auth.signOut()}>
+                  SIGN OUT
+               </div> //kondisi jika sudah login maka text berubah menjadi signout
+            ) : (
+               <Link className="option" to="/signin">
+                  {" "}
+                  SIGN IN
+               </Link>
+            )}
          </div>
       </div>
    );
 };
 
-export default Header;
+const mapStateToProps = (state) => ({
+   currentUser: state.user.currentUser,
+});
+export default connect(mapStateToProps)(Header);
